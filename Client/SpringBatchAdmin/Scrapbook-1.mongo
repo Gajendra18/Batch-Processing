@@ -1,0 +1,24 @@
+
+
+
+db.employees.insertMany([
+    {name:"Gajendra", marks:[1,2,3,4]},
+    {name:"Anushree", marks:[1,2,3,4,5]},
+    {name:"Lavesh", marks:[1,2,3,4]},
+    {name:"Saujanya", marks:[0,1,2,3,4]}
+])
+
+
+db.employees.find({
+    "marks":{$size : 5 , $size:4}
+},
+{
+    name:1,_id:0
+})
+
+db.employees.find({
+    "marks":{$size : 5 , $size:4}
+},
+{
+    name:1
+})

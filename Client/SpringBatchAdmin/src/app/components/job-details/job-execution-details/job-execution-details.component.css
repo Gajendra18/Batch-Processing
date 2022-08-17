@@ -1,0 +1,66 @@
+.table {
+  text-align: center;
+  width: 95%;
+  margin: 30px auto;
+
+}
+
+.mat-form-field {
+  font-size: 14px;
+  display: block;
+  width: 95%;
+  margin: 10px auto -20px;
+}
+
+.CreateJob {
+  width: 95%;
+  margin: 30px auto 10px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+
+.box {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+}
+
+.starting {
+  background-color: yellow;
+}
+
+.running {
+  background-color: forestgreen;
+}
+
+.failed {
+  background-color: red;
+}
+
+.waiting {
+  background-color: orangered;
+}
+
+.spinnerClass{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  }
+  .spinnerClass span{
+  font-size: 20px;    
+  }
+  
+  .spinnerBackground{
+    display: block;
+    width: 350px;
+    height: 200px;
+    /* Setup */
+    margin: 200px auto;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  }

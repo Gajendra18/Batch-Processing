@@ -1,0 +1,84 @@
+.form {
+    width: 60%;
+    margin: 100px auto;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+    padding: 10px;
+  }
+
+.title{
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 20px;
+}
+
+
+  .contain{
+    width: 100%;
+}
+  .contain mat-form-field,.contain div, mat-checkbox{
+      width: 80%;
+      box-sizing: border-box;
+      padding: 5px 20px;
+  }
+
+
+  p{
+    height: 10px;
+  }
+
+  .formButtons{
+    margin-top: 30px;
+      display: flex;
+      margin-left: 20px;
+      text-align: center;
+  }
+
+  .formButtons button{
+      margin-right: 20px;
+  }
+  
+  .cain{
+      height: 30px;
+  }
+
+  .emailContainer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6);
+    padding: 10px;
+  }
+
+  .EmailExpansion{
+      width: 30%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+  }
+
+
+  mat-spinner{
+    position: absolute;
+    display: block;
+    left:48%;top:40%;
+    }
+
+
+    .spinnerClass span{
+    font-size: 20px;    
+    }
+
+
+    .spinnerClass{
+      position:fixed;
+      width:100%;
+      left:0;right:0;top:0;bottom:0;
+      background-color: rgba(255,255,255,0.7);
+      z-index:9999;
+    }
+  

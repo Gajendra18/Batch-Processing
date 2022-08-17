@@ -1,0 +1,64 @@
+<div class="CreateJob">
+    <button mat-raised-button color="primary" [routerLink]="['/create']">Create/Schedule a job</button>
+</div>
+  <div class="spinnerBackground" *ngIf="loading">
+    <div class="spinnerClass">
+      <mat-spinner></mat-spinner>
+      <br>
+      <span class="md-headline">Loading</span>
+  </div>
+  </div>
+  <div [hidden]="loading">
+  <div class="table mat-elevation-z8" [hidden]="listOfJobs.length == 0">
+    <mat-table [dataSource]="dataSource">
+      <!-- Position Column -->
+      <ng-container matColumnDef="jobID">
+        <mat-header-cell *matHeaderCellDef> Job Id </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.jobID}} </mat-cell>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="jobName">
+        <mat-header-cell *matHeaderCellDef> Job Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.jobName}} </mat-cell>
+      </ng-container>
+    
+      <!-- Weight Column -->
+     
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="createTime">
+        <mat-header-cell *matHeaderCellDef> Start Time </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.createTime | date:'medium':'IST'}} </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="endTime">
+        <mat-header-cell *matHeaderCellDef> End Time </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.endTime == null ? "-" : element.endTime | date:'medium':'IST'}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="duration">
+        <mat-header-cell *matHeaderCellDef> Duration </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.endTime == null ? "-" : calculateDuration(element.createTime,element.endTime) | date:'HH:mm:ss'}} </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-cell *matCellDef="let element" [innerHTML]="element.status | titlecase | status"></mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+        <mat-cell *matCellDef="let element"><button mat-button [routerLink]="['/jobDetails',element.jobID]">view</button></mat-cell>
+      </ng-container>
+    
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+  
+      <div class="NoJobs" *ngIf="listOfJobs.length == 0">
+        Jobs Details Not Available!
+      </div>
+  </div>
+  
+  

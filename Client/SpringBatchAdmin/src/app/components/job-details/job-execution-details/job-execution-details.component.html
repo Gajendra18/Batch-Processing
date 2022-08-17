@@ -1,0 +1,82 @@
+<div class="CreateJob">
+  Job Details Of Execution Id : {{jobExecutionId}}
+</div>
+<div class="spinnerBackground" *ngIf="loading">
+  <div class="spinnerClass">
+    <mat-spinner></mat-spinner>
+    <br>
+    <span class="md-headline">Loading</span>
+</div>
+</div>
+<div [hidden]="loading">
+<div class="table mat-elevation-z8" [hidden]="listOfWorkers.length == 0">
+  <mat-table [dataSource]="dataSource">
+    <!-- Position Column -->
+    <ng-container matColumnDef="stepName">
+      <mat-header-cell *matHeaderCellDef> Worker Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.stepName}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="createTime">
+      <mat-header-cell *matHeaderCellDef> Start Time </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.startTime | date:'medium':'IST'}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="endTime">
+      <mat-header-cell *matHeaderCellDef> End Time </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.endTime == null ? "-" : element.endTime | date:'medium':'IST'}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="duration">
+      <mat-header-cell *matHeaderCellDef> Duration </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.endTime == null ? "-" :
+        calculateDuration(element.startTime,element.endTime) | date:'HH:mm:ss'}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <!-- <td *ngIf="liveStatus"><div class="box" [ngClass]='className(jobExecutionId,element.stepName)' *ngIf="element.stepName != 'masterStep'"></div></td> -->
+        <td [innerHTML]="element.status | titlecase | status"></td>
+      </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="readCount">
+      <mat-header-cell *matHeaderCellDef> Read Count </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <!-- <td *ngIf="liveStatus">{{getReadCount(jobExecutionId,element.stepName)}}</td> -->
+        <td>
+          {{element.readCount}}</td>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="writeCount">
+      <mat-header-cell *matHeaderCellDef> Write Count </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <!-- <td *ngIf="liveStatus">{{getWriteCount(jobExecutionId,element.stepName)}}</td> -->
+        <td>{{element.writeCount}}</td>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="logs">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let element"><button *ngIf="element.stepName != 'masterStep'" mat-button
+          (click)="openDialog(element.stepName)">view</button> </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+</div>
+
+<div class="NoJobs" *ngIf="listOfWorkers.length == 0">
+  job execution not started!
+</div>
+</div>

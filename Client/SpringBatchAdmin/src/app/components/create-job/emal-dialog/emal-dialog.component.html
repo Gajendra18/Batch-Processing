@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Add Emails</h1>
+<div mat-dialog-content>
+    <form [formGroup]="emailForm">
+        <mat-form-field>
+            <mat-label>Email address</mat-label>
+            <input matInput formControlName="email">
+            <mat-error>Enter a valid email address</mat-error>
+          </mat-form-field>
+          <mat-action-row>
+            <button mat-raised-button color="primary" (click)="addMails()" type="button" [disabled]="emailForm.invalid">Add</button>
+          </mat-action-row>
+        </form>
+        <div class="emailsDIv">
+            <span *ngFor="let mail of mails">
+                {{mail}}
+            </span>
+        </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" mat-dialog-close (click)="onCloseConfirm()">Close</button>
+</div>

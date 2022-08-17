@@ -1,0 +1,79 @@
+.table {
+    width: 70%;
+    margin: 30px auto;
+}
+
+mat-header-cell, mat-cell {
+    text-align: center;
+}
+
+mat-expansion-panel {
+    margin: 10px 0;
+}
+
+
+.example-card {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+td {
+    padding: 15px 20px;
+    font-size: 17px;
+}
+
+.jobDetails td:first-child{
+    width: 150px;
+}
+
+.jobDetails tr td:nth-child(1){
+    font-weight: 600;
+}
+
+.jobDetails tr td:nth-child(2){
+    text-align: left;
+}
+
+mat-card-actions {
+    padding-left: 10px;
+}
+
+.spinnerClass {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.spinnerClass span {
+    font-size: 20px;
+}
+
+.downloadProgress{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 90%;
+}
+
+.spinnerBackground{
+    display: block;
+    width: 350px;
+    height: 200px;
+    /* Setup */
+    margin: 200px auto;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  }
+
+  .tableSchema, .tableSchema tr, .tableSchema td{
+    border: 1px solid black;
+  border-collapse: collapse;
+  }
+
+  .tableSchema td{
+    text-align: left;
+  }

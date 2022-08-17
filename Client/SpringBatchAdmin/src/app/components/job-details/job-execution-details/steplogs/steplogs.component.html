@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>{{data.Name}}</h2>
+<mat-dialog-content class="mat-typography">
+  <ng-container *ngFor="let line of logs">
+    <div>{{line}}</div>
+  </ng-container>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
