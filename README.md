@@ -28,9 +28,7 @@ A batch Processing application developed using Spring Batch to  parallely proces
 ## System Architecture
 
 ![System Architecture](Images/SystemArchitecture.png)
-## Demo
 
-![System Architecture](images/SystemArchitecture.png)
 
 ## Authors
 
