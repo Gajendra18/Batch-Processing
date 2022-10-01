@@ -19,7 +19,7 @@ A batch Processing application developed using Spring Batch framework which can 
 
 ## Demo
 
-[Batch Processing Demo](Images/BatchDemoVideo.mp4)
+[Batch Processing Demo](https://user-images.githubusercontent.com/40609197/193426058-328cc514-999f-4cae-bc8a-cf7c2ef07754.mp4)
 
 
 ## Tech Stack
