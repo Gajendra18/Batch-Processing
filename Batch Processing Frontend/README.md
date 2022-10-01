@@ -26,5 +26,5 @@ Start the server
 
 ## Screenshots
 
-![App Screenshot](../../Images/SpringAdminUI.png)
+![App Screenshot](../Images/SpringAdminUI.png)
 
