@@ -1,0 +1,82 @@
+    <div class="spinnerClass" *ngIf="loading">
+      <mat-spinner></mat-spinner>
+  </div>
+
+
+<form [formGroup]="createForm" class="form" (ngSubmit)="submitJob()">
+    <div class="title">Job Configuration</div>
+<mat-grid-list cols="2" rowHeight="400px">
+    <mat-grid-tile>
+        <div class="contain">
+        <mat-form-field>
+            <mat-label>Job Name</mat-label>
+            <input matInput formControlName="jobName">
+            <mat-error *ngIf="!createForm.controls.jobName.errors?.jobNameEror">Enter job name</mat-error>
+            <mat-error *ngIf="createForm.controls.jobName.errors?.jobNameEror">Job name already exists!</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Job Description</mat-label>
+            <input matInput formControlName="jobDescription">
+            <mat-error>Enter job description</mat-error>
+            <!-- <input type="file" webkitdirectory multiple/> -->
+        </mat-form-field>
+        
+        
+        <div (click)="uploadFile.click()">
+            <button type="button" mat-raised-button color="primary">Choose Files</button>
+            <input #uploadFile formControlName="input" (change)="upload($event)" type='file' multiple accept=".csv" size="" style="display:none"/> 
+            <mat-error *ngIf="createForm.controls.input.errors?.emptyFile">File is empty!</mat-error>
+            <mat-error *ngIf="createForm.controls.input.errors?.maxUploadSize">File size should be less than 10MB!</mat-error>
+         </div>
+
+        <mat-form-field >
+            <mat-label>Partition Size</mat-label>
+            <input type="number" matInput formControlName="size">
+            <mat-hint *ngIf="files.length == 1">Nuber of worker nodes</mat-hint>
+            <mat-hint *ngIf="files.length > 1">Number of files per worker node</mat-hint>
+            <mat-error>Enter partition size</mat-error>
+        </mat-form-field>
+
+        
+
+    </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="contain">
+            <mat-form-field >
+                <mat-label>Collection Name</mat-label>
+                <input type="text" matInput formControlName="collectionName">
+                <mat-hint>Enter Table Name</mat-hint>
+                <mat-error *ngIf="!createForm.controls.collectionName.errors?.collectionNameEror">Enter table name</mat-error>
+                <mat-error *ngIf="createForm.controls.collectionName.errors?.collectionNameEror">Table already exists!</mat-error>
+            </mat-form-field>
+         <mat-form-field>
+            <mat-label>Select</mat-label>
+            <mat-select formControlName="time" [(ngModel)]="timeValue" (selectionChange)="input()">
+              <mat-option value=0>Run Now</mat-option>
+              <mat-option value=1>Schedule</mat-option>
+            </mat-select>
+          </mat-form-field>
+        <mat-form-field *ngIf="timeValue=='1'">
+            <mat-label>Job Group</mat-label>
+            <input matInput formControlName="jobGroup"> 
+            <mat-error>Enter job group</mat-error>
+        </mat-form-field>
+        <mat-form-field *ngIf="timeValue=='1'">
+            <mat-label>Cron Expression</mat-label>
+            <input matInput formControlName="cron">
+            <mat-error *ngIf="!createForm.controls.cron.errors?.cronEror">Enter a valid cron expresion</mat-error>
+            <mat-error *ngIf="createForm.controls.cron.errors?.cronEror">Invalid Cron expression!</mat-error>
+
+        </mat-form-field>
+            <mat-checkbox formControlName="check" class="example-margin" [(ngModel)]="checked">Restart on failure</mat-checkbox>
+        <div class="formButtons">
+            <button mat-raised-button color="warn" type="button" (click)="openDialog()">Add Emails</button>
+            <button mat-raised-button color="primary" type="submit" style="display: block;" [disabled]="createForm.invalid">Run</button>
+        </div>
+        
+    </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
+

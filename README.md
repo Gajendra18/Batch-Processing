@@ -1,7 +1,7 @@
 
 # Batch Processing
 
-A batch Processing application developed using Spring Batch to  parallely process large csv files containing millions of records and store them in the database using master-worker approach.
+A batch Processing application developed using Spring Batch framework which can process large csv/excel files containing millions of records and store them in the database using master-worker approach. This can also be used to send marketing/deadline email alerts to users and can be scheduled to run on particular time. 
 
 
 
@@ -10,10 +10,11 @@ A batch Processing application developed using Spring Batch to  parallely proces
 - Admin UI to configure and manage jobs
 - Restartability (Continue where you left off)
 - Job Scheduling
-- Worker nodes live updates and health monitoring
-- View worker execution logs
-- CSV parser to detect CSV fields data type
-- View database schema
+- works with CSV and Excel files
+- Automatic mapping of fields/columns to correct data types
+- Worker nodes real time updates and health monitoring
+- View job execution logs
+- View job database schema
 - Email alerts
 
 ## Tech Stack

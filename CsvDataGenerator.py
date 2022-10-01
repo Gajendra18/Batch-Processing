@@ -4,7 +4,7 @@ from random import randint
 import time
 from datetime import datetime
 
-records = 50000
+records = 300000
 start = 600000
 
 end = start + records
